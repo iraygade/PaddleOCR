@@ -1,17 +1,5 @@
-shapely
-scikit-image
-pyclipper
-lmdb
-tqdm
+flask
+paddleocr
+paddlepaddle
+pillow
 numpy
-rapidfuzz
-opencv-python
-opencv-contrib-python
-cython
-Pillow
-pyyaml
-requests
-albumentations
-# to be compatible with albumentations
-albucore
-packaging
