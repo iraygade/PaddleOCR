@@ -3,8 +3,10 @@ from flask import Flask, request, jsonify
 from paddleocr import PaddleOCR
 from PIL import Image
 import numpy as np
+from flask_cors import CORS 
 
 app = Flask(__name__)
+CORS(app)
 
 # Load the OCR model once
 ocr = PaddleOCR(use_angle_cls=True, lang='en')
