@@ -20,7 +20,7 @@ def ocr_endpoint():
     img = Image.open(f.stream).convert('RGB')
     img_array = np.array(img)
 
-    result = ocr.ocr(img_array, cls=True)
+    result = ocr.predict(img_array)
     text_lines = [line[1][0] for line in result[0]]
     return jsonify({"text": text_lines})
 
