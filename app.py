@@ -3,13 +3,13 @@ from flask import Flask, request, jsonify
 from paddleocr import PaddleOCR
 from PIL import Image
 import numpy as np
-from flask_cors import CORS 
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
 
-# Load the OCR model once
-ocr = PaddleOCR(use_angle_cls=True, lang='en')
+# Corrected parameters
+ocr = PaddleOCR(use_textline_orientation=True, lang='en')
 
 @app.route('/ocr', methods=['POST'])
 def ocr_endpoint():
@@ -20,7 +20,8 @@ def ocr_endpoint():
     img = Image.open(f.stream).convert('RGB')
     img_array = np.array(img)
 
-    result = ocr.predict(img_array)
+    # Corrected method
+    result = ocr.ocr(img_array)
     text_lines = [line[1][0] for line in result[0]]
     return jsonify({"text": text_lines})
 
